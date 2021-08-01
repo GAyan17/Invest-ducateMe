@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604068028007",
+    "project_id": "invet-ducate-me",
+    "storage_bucket": "invet-ducate-me.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604068028007:android:9051feb1f0f408c3033ec2",
+        "android_client_info": {
+          "package_name": "com.example.invest_educate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604068028007-h5h2kbn2uvks72876bnsfkthb770vm3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8nMs6scuA5si1U-rNoC7NTxcAfS0LMKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604068028007-h5h2kbn2uvks72876bnsfkthb770vm3j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
