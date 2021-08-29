@@ -4,3 +4,6 @@ export 'auth/forms/email_input.dart';
 export 'auth/forms/name_input.dart';
 export 'auth/forms/password_input.dart';
 export 'crypto/cryptocurrency.dart';
+export 'crypto/invest_transaction.dart';
+export 'crypto/investment.dart';
+export 'crypto/withdraw_transaction.dart';

@@ -4,10 +4,10 @@ class CryptoCurrency extends Equatable {
   final int id;
   final String name;
   final String symbol;
-  final double qoutePriceUSD;
-  final double percentChange1h;
-  final double percentChange24h;
-  final double percentChange7d;
+  final num qoutePriceUSD;
+  final num percentChange1h;
+  final num percentChange24h;
+  final num percentChange7d;
 
   const CryptoCurrency(
       {required this.id,

@@ -1,10 +1,19 @@
 part of 'cryptocurrency_cubit.dart';
 
-abstract class CryptocurrencyState extends Equatable {
-  const CryptocurrencyState();
+abstract class CryptoCurrencyState extends Equatable {
+  const CryptoCurrencyState();
 
   @override
   List<Object> get props => [];
 }
 
-class CryptocurrencyInitial extends CryptocurrencyState {}
+class CryptoCurrencyInitial extends CryptoCurrencyState {}
+
+class CryptoCurrenciesFetched extends CryptoCurrencyState {
+  final List<CryptoCurrency> currencies;
+
+  const CryptoCurrenciesFetched(this.currencies);
+
+  @override
+  List<Object> get props => [currencies];
+}

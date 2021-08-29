@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:invest_educate/view/view.dart';
 
 import '../../bloc/bloc.dart';
-import '../../data/models/models.dart';
 import '../../data/repositories/repositories.dart';
+import '../view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,16 +13,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late List<CryptoCurrency> cryptoCurrencies;
-
   @override
   void initState() {
     super.initState();
-  }
-
-  Future<List<CryptoCurrency>> getCurrencies() async {
-    var cryptoCurrencyRepository = CryptoCurrencyRepository();
-    return await cryptoCurrencyRepository.getListing();
   }
 
   @override
@@ -48,22 +40,38 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              body: TabBarView(children: [
-                FutureBuilder<List<CryptoCurrency>>(
-                  future: getCurrencies(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ExploreList(cryptoCurrencies: snapshot.data!);
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      );
-                    }
-                  },
+              drawer: Drawer(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    const DrawerHeader(
+                      child: Text('Header'),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.green, Colors.purple, Colors.blue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                    ListTile(
+                      title: const Text('Tweets'),
+                      onTap: () {
+                        print('Tweets');
+                      },
+                    ),
+                    const Divider(),
+                  ],
                 ),
-                const Center(
-                  child: Text('DashBoard'),
-                )
+              ),
+              body: TabBarView(children: [
+                BlocProvider(
+                  create: (context) => CryptoCurrencyCubit(
+                      repository: CryptoCurrencyRepository()),
+                  child: Explore(),
+                ),
+                DashBoard(appUser: state.user!),
               ]),
             ),
           );
@@ -74,35 +82,6 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }
-      },
-    );
-  }
-}
-
-class ExploreList extends StatefulWidget {
-  const ExploreList({Key? key, required this.cryptoCurrencies})
-      : super(key: key);
-
-  final List<CryptoCurrency> cryptoCurrencies;
-
-  @override
-  _ExploreListState createState() => _ExploreListState();
-}
-
-class _ExploreListState extends State<ExploreList> {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: widget.cryptoCurrencies.length,
-      itemBuilder: (_, index) {
-        return Card(
-          child: ListTile(
-            leading: Text(widget.cryptoCurrencies[index].symbol),
-            title: Text(widget.cryptoCurrencies[index].name),
-            trailing: Text(
-                '${widget.cryptoCurrencies[index].qoutePriceUSD.toStringAsFixed(4)} USD'),
-          ),
-        );
       },
     );
   }

@@ -22,6 +22,7 @@ class InvestuCateMeApp extends StatelessWidget {
         title: constants.title,
         themeMode: ThemeMode.system,
         theme: theme,
+        darkTheme: ThemeData.dark(),
         home: BlocConsumer<AuthBloc, AuthState>(
           listener: (_, state) {
             if (state.status == AuthStatus.authtenticationError) {
@@ -42,13 +43,23 @@ class InvestuCateMeApp extends StatelessWidget {
             }
           },
           builder: (_, state) {
-            if (state.status == AuthStatus.authenticated) {
-              return const HomePage();
-            } else if (state.status == AuthStatus.unAuthenticated) {
-              return const LoginPage();
-            } else {
-              return const LoadingPage();
-            }
+            return Navigator(
+              pages: [
+                if (state.status == AuthStatus.authenticated)
+                  MaterialPage(
+                    child: HomePage(),
+                  )
+                else if (state.status == AuthStatus.unAuthenticated)
+                  MaterialPage(
+                    child: LoginPage(),
+                  )
+                else
+                  MaterialPage(
+                    child: LoadingPage(),
+                  )
+              ],
+              onPopPage: (route, result) => route.didPop(result),
+            );
           },
         ),
       ),

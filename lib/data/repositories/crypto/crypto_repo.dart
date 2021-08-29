@@ -7,8 +7,6 @@ import '../../models/models.dart';
 
 class CryptoCurrencyRepository {
   Future<List<CryptoCurrency>> getListing() async {
-    print('GetListing');
-
     var uri = Uri.parse('${secrets.sandboxUri}?start=1&limit=20');
 
     var response = await http.get(uri, headers: {
