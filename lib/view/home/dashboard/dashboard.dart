@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../bloc/bloc.dart';
 import '../../../data/models/models.dart';
 
 class DashBoard extends StatelessWidget {
@@ -11,7 +13,7 @@ class DashBoard extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 8.0,
+          height: 10.0,
         ),
         Card(
           child: Container(
@@ -19,8 +21,8 @@ class DashBoard extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Total Money: ${appUser.totalMoney}',
-                  style: Theme.of(context).textTheme.subtitle1,
+                  'Total Money: \$ ${appUser.totalMoney}',
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 const SizedBox(
                   height: 16.0,
@@ -29,12 +31,24 @@ class DashBoard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('Invested: ${appUser.invested}'),
-                    Text('Current Value: ${appUser.currentValue}'),
+                    Text(
+                      'Invested: ${appUser.invested}',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    Text(
+                      'Current Value: ${appUser.currentValue}',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                     if (appUser.currentValue >= appUser.invested)
-                      Text('Profit: ${appUser.profit}')
+                      Text(
+                        'Profit: ${appUser.profit}',
+                        style: Theme.of(context).textTheme.headline6,
+                      )
                     else
-                      Text('Loss ${appUser.loss}')
+                      Text(
+                        'Loss ${appUser.loss}',
+                        style: Theme.of(context).textTheme.headline6,
+                      )
                   ],
                 )
               ],
@@ -45,9 +59,34 @@ class DashBoard extends StatelessWidget {
           height: 10.0,
         ),
         Container(
-          height: MediaQuery.of(context).size.height * 0.6,
           alignment: Alignment.topCenter,
-          child: const Text('Investments'),
+          child: Text(
+            'Investments',
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        BlocBuilder<TransactionCubit, TransactionState>(
+          builder: (context, state) {
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: state.investTransactions.length,
+              itemBuilder: (_, index) {
+                return Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  child: ListTile(
+                    title: Text(state.investTransactions[index].name),
+                    leading: Text(state.investTransactions[index].symbol),
+                    trailing: Text(state.investTransactions[index].tokens
+                        .toStringAsPrecision(8)),
+                  ),
+                );
+              },
+            );
+          },
         )
       ],
     );

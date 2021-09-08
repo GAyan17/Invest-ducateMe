@@ -20,7 +20,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   final AuthRepository _authRepository;
   final AppUserRepository _appUserRepository;
-  late final StreamSubscription _authSubscription;
+  // late final StreamSubscription _authSubscription;
 
   User? _currentUser;
   AppUser? _currentAppUser;
@@ -45,7 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   @override
   Future<void> close() {
-    _authSubscription.cancel();
+    // _authSubscription.cancel();
     return super.close();
   }
 

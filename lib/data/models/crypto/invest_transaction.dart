@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class InvestTransaction extends Equatable {
@@ -7,6 +8,7 @@ class InvestTransaction extends Equatable {
   final String name;
   final num amountSpend;
   final num tokenAmount;
+  final num tokens;
   final DateTime timeStamp;
 
   const InvestTransaction({
@@ -16,6 +18,7 @@ class InvestTransaction extends Equatable {
     required this.name,
     required this.amountSpend,
     required this.tokenAmount,
+    required this.tokens,
     required this.timeStamp,
   });
 
@@ -27,6 +30,7 @@ class InvestTransaction extends Equatable {
         name,
         amountSpend,
         tokenAmount,
+        tokens,
         timeStamp,
       ];
 
@@ -38,7 +42,9 @@ class InvestTransaction extends Equatable {
         name: data['name'],
         amountSpend: data['amount_spend'],
         tokenAmount: data['token_amount'],
-        timeStamp: data['timestamp'],
+        tokens: data['tokens'],
+        timeStamp: DateTime.parse(
+            (data['timestamp'] as Timestamp).toDate().toString()),
       );
 
   Map<String, dynamic> toDocument() => {
@@ -48,6 +54,7 @@ class InvestTransaction extends Equatable {
         'name': name,
         'amount_spend': amountSpend,
         'token_amount': tokenAmount,
+        'tokens': tokens,
         'timestamp': timeStamp,
       };
 }

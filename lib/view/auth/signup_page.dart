@@ -71,6 +71,7 @@ class _NameInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -86,6 +87,8 @@ class _NameInputField extends StatelessWidget {
                 labelText: 'Name',
                 // helperText: 'Enter your Name',
                 errorText: state.email.invalid ? 'Name cannot be empty' : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },
@@ -101,6 +104,7 @@ class _EmailInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -116,6 +120,8 @@ class _EmailInputField extends StatelessWidget {
                 labelText: 'Email',
                 // helperText: 'Enter your Email',
                 errorText: state.email.invalid ? 'Invalid Email' : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },
@@ -131,6 +137,7 @@ class _PasswordInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -149,6 +156,8 @@ class _PasswordInputField extends StatelessWidget {
                 errorText: state.password.invalid
                     ? 'Password must be atleast 8 characters long'
                     : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },
@@ -164,6 +173,7 @@ class _ConfirmPasswordInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -182,6 +192,8 @@ class _ConfirmPasswordInputField extends StatelessWidget {
                 // helperText: 'Enter your Password again ',
                 errorText:
                     state.password.invalid ? 'Passwords Do Not Match' : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },

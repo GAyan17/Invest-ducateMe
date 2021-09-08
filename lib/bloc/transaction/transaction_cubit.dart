@@ -29,11 +29,15 @@ class TransactionCubit extends Cubit<TransactionState> {
   late StreamSubscription _withdrawTransactionsSub;
 
   void investTransactionsFetched(List<InvestTransaction> investTransactions) {
+    print('Invest Transactions Fetched');
+    print('Invest Transactions: ${investTransactions.length}');
     emit(state.copyWith(investTransactions: investTransactions));
   }
 
   void withdrawTransactionFetched(
       List<WithdrawTransacton> withdrawTransactions) {
+    print('Withdraw Transactions Fetched');
+    print('Withdraw Transactions: ${withdrawTransactions.length}');
     emit(state.copyWith(withdrawTransactions: withdrawTransactions));
   }
 

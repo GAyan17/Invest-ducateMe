@@ -7,10 +7,10 @@ import '../../models/models.dart';
 
 class CryptoCurrencyRepository {
   Future<List<CryptoCurrency>> getListing() async {
-    var uri = Uri.parse('${secrets.sandboxUri}?start=1&limit=20');
+    var uri = Uri.parse('${secrets.listingEndpoint}?start=1&limit=20');
 
     var response = await http.get(uri, headers: {
-      secrets.header: secrets.sandboxApiKey,
+      secrets.header: secrets.apiKey,
     });
 
     if (response.statusCode == 200) {

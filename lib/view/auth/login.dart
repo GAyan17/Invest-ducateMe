@@ -105,6 +105,9 @@ class _EmailInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -120,6 +123,8 @@ class _EmailInputField extends StatelessWidget {
                 labelText: 'Email',
                 // helperText: 'Enter your Email',
                 errorText: state.email.invalid ? 'Invalid Email' : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },
@@ -135,6 +140,9 @@ class _PasswordInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
       child: Container(
         width: MediaQuery.of(context).size.width < 500
             ? MediaQuery.of(context).size.width * 0.75
@@ -150,7 +158,10 @@ class _PasswordInputField extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Password',
                 // helperText: 'Enter your Password',
+
                 errorText: state.password.invalid ? 'Invalid Password' : null,
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
               ),
             );
           },

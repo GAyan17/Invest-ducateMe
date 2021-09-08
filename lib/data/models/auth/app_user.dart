@@ -21,6 +21,24 @@ class AppUser extends Equatable {
     this.loss = 0.0,
   });
 
+  AppUser copyWith(
+      {String? name,
+      num? totalMoney,
+      num? invested,
+      num? currentValue,
+      num? profit,
+      num? loss}) {
+    return AppUser(
+        id: id,
+        name: name ?? this.name,
+        email: email,
+        totalMoney: totalMoney ?? this.totalMoney,
+        invested: invested ?? this.invested,
+        currentValue: currentValue ?? this.currentValue,
+        profit: profit ?? this.profit,
+        loss: loss ?? this.loss);
+  }
+
   factory AppUser.fromDocument(Map<String, dynamic> data) => AppUser(
         id: data['id'],
         name: data['name'],
