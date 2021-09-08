@@ -9,25 +9,9 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.green,
-              Colors.lightGreen,
-              Colors.lightBlue,
-              Colors.blue,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: BlocProvider<SignUpFormCubit>(
-          create: (_) => SignUpFormCubit(),
-          child: const _SignUpForm(),
-        ),
+      body: BlocProvider<SignUpFormCubit>(
+        create: (_) => SignUpFormCubit(),
+        child: const _SignUpForm(),
       ),
     );
   }
@@ -42,7 +26,21 @@ class _SignUpForm extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
+      children: [
+        Text(
+          'Invest-educate ME',
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+        Text(
+          'Login',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
         _NameInputField(),
         SizedBox(
           height: 10.0,

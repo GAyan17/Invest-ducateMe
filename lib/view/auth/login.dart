@@ -10,25 +10,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.green,
-              Colors.lightGreen,
-              Colors.lightBlue,
-              Colors.blue,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: BlocProvider<LoginFormCubit>(
-          create: (_) => LoginFormCubit(),
-          child: const _LoginForm(),
-        ),
+      body: BlocProvider<LoginFormCubit>(
+        create: (_) => LoginFormCubit(),
+        child: const _LoginForm(),
       ),
     );
   }
@@ -44,6 +28,20 @@ class _LoginForm extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        Text(
+          'Invest-educate ME',
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+        Text(
+          'Login',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
         const _EmailInputField(),
         const SizedBox(
           height: 10.0,
